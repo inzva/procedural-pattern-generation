@@ -14,16 +14,16 @@ import numpy as np
 from tensorflow import keras
 from tqdm.notebook import tqdm
 
-seed = np.loadtxt('super_mario_as_a_string/data_preprocessed/seed.txt', dtype=float)[:3*17 - 1].copy()
+seed = np.loadtxt('./data_preprocessed/seed.txt', dtype=float)[:3*17 - 1].copy()
 
-with open('super_mario_as_a_string/data_preprocessed/ix_to_char.json', 'r') as json_f:
+with open('./data_preprocessed/ix_to_char.json', 'r') as json_f:
     ix_to_char = json.load(json_f)
     
-with open('super_mario_as_a_string/data_preprocessed/char_to_ix.json', 'r') as json_f:
+with open('./data_preprocessed/char_to_ix.json', 'r') as json_f:
     char_to_ix = json.load(json_f)
     
 model = keras.models.load_model(
-    'super_mario_as_a_string/trained_models/mario_lstm.h5', 
+    './trained_models/mario_lstm.h5', 
     compile=False
 )
 
@@ -52,7 +52,7 @@ seed[17*2+14][char_to_ix['x']] = 1
 print(onehot_to_string(seed))
 
 def get_seed():
-    seed = np.loadtxt('super_mario_as_a_string/data_preprocessed/seed.txt', dtype=float)[:3*17 - 1]
+    seed = np.loadtxt('./data_preprocessed/seed.txt', dtype=float)[:3*17 - 1]
     seed[17+14] = 0
     seed[17+14][char_to_ix['x']] = 1
     seed[17*2+14] = 0
@@ -118,6 +118,6 @@ for i in tqdm(range(num_chars_to_gen), leave=False):
 gen.shape
 
 for i, g in enumerate(gen):
-    with open(f'super_mario_as_a_string/generated_levels_txt/{i+1}.txt', 'w+') as txt_f:
+    with open(f'./generated_levels_txt/{i+1}.txt', 'w+') as txt_f:
         txt_f.write(onehot_to_string(g))
 

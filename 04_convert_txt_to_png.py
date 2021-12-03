@@ -13,25 +13,25 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 
-tiles_dir = 'super_mario_as_a_string/tiles'
+tiles_dir = './tiles'
 
 chars2pngs = {    
-    "-": Image.open(f'{tiles_dir}/smb-background.png'),
-    "X": Image.open(f'{tiles_dir}/smb-unpassable.png'),
-    "S": Image.open(f'{tiles_dir}/smb-breakable.png'),
-    "?": Image.open(f'{tiles_dir}/smb-question.png'),
-    "Q": Image.open(f'{tiles_dir}/smb-question.png'),
-    "o": Image.open(f'{tiles_dir}/smb-coin.png'),
-    "E": Image.open(f'{tiles_dir}/smb-enemy.png'),
-    "<": Image.open(f'{tiles_dir}/smb-tube-top-left.png'),
-    ">": Image.open(f'{tiles_dir}/smb-tube-top-right.png'),
-    "[": Image.open(f'{tiles_dir}/smb-tube-lower-left.png'),
-    "]": Image.open(f'{tiles_dir}/smb-tube-lower-right.png'),
-    "x": Image.open(f'{tiles_dir}/smb-path.png'),  # self-created
-    "Y": Image.open(f'{tiles_dir}/Y.png'),  # self-created
-    "N": Image.open(f'{tiles_dir}/N.png'),  # self-created
-    "B": Image.open(f'{tiles_dir}/cannon_top.png'),
-    "b": Image.open(f'{tiles_dir}/cannon_bottom.png'), 
+    "-": Image.open(f'./tiles/smb-background.png'),
+    "X": Image.open(f'./tiles/smb-unpassable.png'),
+    "S": Image.open(f'./tiles/smb-breakable.png'),
+    "?": Image.open(f'./tiles/smb-question.png'),
+    "Q": Image.open(f'./tiles/smb-question.png'),
+    "o": Image.open(f'./tiles/smb-coin.png'),
+    "E": Image.open(f'./tiles/smb-enemy.png'),
+    "<": Image.open(f'./tiles/smb-tube-top-left.png'),
+    ">": Image.open(f'./tiles/smb-tube-top-right.png'),
+    "[": Image.open(f'./tiles/smb-tube-lower-left.png'),
+    "]": Image.open(f'./tiles/smb-tube-lower-right.png'),
+    "x": Image.open(f'./tiles/smb-path.png'),  # self-created
+    "Y": Image.open(f'./tiles/Y.png'),  # self-created
+    "N": Image.open(f'./tiles/N.png'),  # self-created
+    "B": Image.open(f'./tiles/cannon_top.png'),
+    "b": Image.open(f'./tiles/cannon_bottom.png'), 
 }
 
 def char_array_to_image(array):
@@ -46,10 +46,10 @@ def char_array_to_image(array):
     return image
 
 for i in range(10):
-    with open(f'super_mario_as_a_string/generated_levels_txt/{i+1}.txt',  'r') as txt_f:
+    with open(f'./generated_levels_txt/{i+1}.txt',  'r') as txt_f:
         infile = np.array([list(line.rstrip()) for line in txt_f.readlines()])
     plt.figure(figsize=(20, 4))
     plt.imshow(char_array_to_image(infile))
     plt.axis('off')
-    plt.savefig(f'super_mario_as_a_string/generated_levels_png/{i}.png', dpi=200, bbox_inches='tight')
+    plt.savefig(f'./generated_levels_png/{i}.png', dpi=200, bbox_inches='tight')
 

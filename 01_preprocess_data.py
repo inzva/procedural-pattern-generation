@@ -9,7 +9,7 @@ Original file is located at
 
 import os
 import json
-import numpy
+import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm_notebook
 
